@@ -1,3 +1,9 @@
+## ----------------------      ##
+## Derivatives Portfolio Pnl   ##
+## Name: Ryan Loveless         ##                 
+## ----------------------      ##
+
+
 # Load required libraries
 library(ggplot2)
 library(e1071) # For skewness and kurtosis
@@ -13,7 +19,7 @@ market_data <- list(
 
 portfolio_data <- list(
   maturity = 0.02,            # (years)
-  cash_balance = 0        # Cash balance in the portfolio
+  cash_balance = 0            # Cash balance in the portfolio
 )
 
 simulation_data <- list(
@@ -24,10 +30,10 @@ simulation_data <- list(
 
 # Portfolio positions
 portfolio <- data.frame(
-  Type = c("Call", "Forward"),    # Instrument types
-  Number = c(0, 100),          # Number of contracts
+  Type = c("Call", "Forward"),        # Instrument types
+  Number = c(0, 100),                 # Number of contracts
   Strike = c(95.4815, 0),             # Strike prices
-  Value = c(4.66, 100)            # Initial value 
+  Value = c(4.66, 100)                # Initial value 
 )
 
 # Black-Scholes Pricing Function
@@ -97,8 +103,8 @@ n <- simulation_data$num_simulations
 # Simulate spot prices
 spot_prices <- simulate_spot(S0, mu, sigma, T, n)
 
-# Initial Portfolio Value (calculated without cash adjustments)
-initial_value <- value_portfolio(c(S0), portfolio, T, r, cash_balance = 0)[1]  # Exclude cash balance for initial value
+# Initial Portfolio Value 
+initial_value <- value_portfolio(c(S0), portfolio, T, r, cash_balance = 0)[1]  
 
 # Portfolio values at maturity (include cash growth at maturity)
 portfolio_values <- value_portfolio(spot_prices, portfolio, T, r, cash_balance = portfolio_data$cash_balance)
@@ -118,15 +124,15 @@ average_future_value <- mean(portfolio_values)  # Mean of portfolio_values inclu
 # Portfolio Outputs
 portfolio_output <- data.frame(
   Metric = c(
-    "Portfolio Value (Initial)", 
-    "Average Future Portfolio Value (Including Cash Growth)", 
+    "Portfolio Value", 
+    "Average Future Portfolio Value", 
     "Standard Deviation", 
     "Skew", 
     "Kurtosis"
   ),
   Value = c(
     round(initial_value, 2), 
-    round(average_future_value, 2),  # Use mean(portfolio_values) here
+    round(average_future_value, 2),
     round(pnl_sd, 2), 
     round(pnl_skewness, 4), 
     round(pnl_kurtosis, 4)
@@ -149,11 +155,11 @@ payout_df <- data.frame(Spot = spot_range, Payout = payouts)
 ggplot(payout_df, aes(x = Spot, y = Payout)) +
   geom_line(color = "blue", size = 1) +
   theme_minimal(base_size = 14) +
-  labs(title = "Payout Diagram (With Cash Growth)", x = "Asset Level", y = "Payout") +
+  labs(title = "Payout Diagram", x = "Asset Level", y = "Payout") +
   scale_y_continuous(labels = scales::comma)
 
 # PnL Histogram
 ggplot(data.frame(PnL = portfolio_values), aes(x = PnL)) +
   geom_histogram(bins = 50, fill = "blue", alpha = 0.7) +
   theme_minimal() +
-  labs(title = "PnL Distribution (Including Cash Growth)", x = "PnL", y = "Frequency")
+  labs(title = "Portfolio PnL Distribution", x = "PnL", y = "Frequency of Payout")
