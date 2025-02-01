@@ -31,7 +31,23 @@ Here are some of the key projects featured in this repository:
 5. **Financial Statistical Analysis**
    - **Description**: Focuses on statistical tests, confidence intervals, and hypothesis testing for financial datasets.
    - **Skills Highlighted**: Statistical analysis, hypothesis testing.
-
+   
+6. **2-Step Binomial Trees**: Advanced European Option Pricing and Visualization
+   - **Description**: Extends the binomial tree model to two steps for pricing European options. This script uses backward induction for value computation, calculates delta sensitivity, and visualizes the option pricing process over two steps, providing deeper insights into the binomial pricing method.
+   - **Skills Highlighted**: Advanced option pricing techniques, multi-step binomial modeling, risk-neutral probability analysis, and financial visualization.   
+   
+7. **Options Payout Diagrams**: Portfolio Analysis and Visualization
+   - **Description**: Visualizes payout diagrams for a portfolio of financial instruments, including options (calls and puts), forwards, bonds, and shares. This script calculates individual and total payouts, dynamically summarizes the portfolio, and generates clear and intuitive payout diagrams for any combination of instruments.
+   - **Skills Highlighted**: Options and derivatives analysis, portfolio visualization, financial engineering, and R-based dynamic plotting.   
+   
+8. **Market Data Regression and Simulation Analysis**: Financial Regression Models and Birthday Paradox
+   - **Description**: Explores regression modeling of financial market indices (e.g., SPY, VOO, S&P500), two-factor regressions for mutual fund performance against benchmarks and oil prices, and simulates the birthday paradox under different calendar systems. This script highlights the use of R for analyzing market relationships, understanding statistical properties, and applying probability simulations in finance.
+   - **Skills Highlighted**: Regression modeling, financial data analysis, Monte Carlo simulations, and comparative analysis of financial instruments.   
+   
+9. **Market Beta and Regression Analysis**: Stock Volatility and Sensitivity to Market Movements
+   - **Description**: Conducts regression analysis on Tesla (TSLA) and General Electric (GE) against the S&P 500 (SPY) over a 61-month and 36-month period to compute beta coefficients and assess volatility. The analysis includes statistical summaries, visualizations, and comparisons to Yahoo Finance-reported betas, providing insights into changing market sensitivity.
+   - **Skills Highlighted**: Beta estimation, financial regression modeling, time-series analysis, R-squared interpretation, and stock market sensitivity evaluation.
+   
 ---
 
 🔧 Tools & Technologies
